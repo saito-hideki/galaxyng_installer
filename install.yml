@@ -1,0 +1,12 @@
+---
+- hosts: all
+  force_handlers: True
+  vars:
+    pulp_settings:
+      secret_key: changeme
+      content_origin: "https://{{ inventory_hostname }}"
+    pulp_default_admin_password: changeme
+  roles:
+    - pulp.pulp_installer.pulp_all_services
+  environment:
+    DJANGO_SETTINGS_MODULE: pulpcore.app.settings
